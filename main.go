@@ -49,8 +49,8 @@ func main() {
 			CurrentDay: currentDay,
 			UTCTime: utcTime.Format(time.RFC3339),
 			Track: track,
-			GitHubFileURL: "https://github.com/ayowilfred95/hng-stage1",
-			GitHubRepoURL: "https://github.com/ayowilfred95/hng-stage1",
+			GitHubFileURL: "https://github.com/ayowilfred95/HNG-Stage1/blob/main/main.go",
+			GitHubRepoURL: "https://github.com/ayowilfred95/HNG-Stage1",
 			StatusCode: 200,
 		}
 
