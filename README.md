@@ -1,1 +1,2 @@
-run go run main.go to start the server
+# To start the server, run the command below in your terminal
+go run main.go 
