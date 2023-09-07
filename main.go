@@ -22,9 +22,16 @@ type Parameter struct {
 
 
 func main() {
+
+	// Set Gin mode to "release"
+    gin.SetMode(gin.ReleaseMode)
+
 	// Gin Web Framework was used to speed the server just like
 	// Express
 	router := gin.Default()
+
+	 // Configure proxy handling
+	 router.SetTrustedProxies(true) 
 
 	// Endpoint
 	router.GET("/api", func(c *gin.Context) {
@@ -59,9 +66,6 @@ func main() {
 	})
 
 	// Start the server
-	err := router.Run(":8080")
-	if err != nil {
-		panic(err)
-	}
-	router.Run() 
+	// Run the server
+    router.Run(":8080")
 }
