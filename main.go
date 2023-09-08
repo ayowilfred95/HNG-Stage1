@@ -1,13 +1,16 @@
 package main
 
 import (
+	"fmt"
+	"log"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
-
-// create a struct to define our custom data 
+// create a struct to define our custom data
 
 type Parameter struct {
 	SlackName      string    `json:"slack_name"`
@@ -23,15 +26,21 @@ type Parameter struct {
 
 func main() {
 
-	// Set Gin mode to "release"
-    gin.SetMode(gin.ReleaseMode)
+	err := godotenv.Load() 
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "8080"
+	}
 
 	// Gin Web Framework was used to speed the server just like
 	// Express
 	router := gin.Default()
 
-	 // Configure proxy handling
-	 router.SetTrustedProxies(true) 
 
 	// Endpoint
 	router.GET("/api", func(c *gin.Context) {
@@ -66,6 +75,7 @@ func main() {
 	})
 
 	// Start the server
-	// Run the server
-    router.Run(":8080")
+    router.Run(fmt.Sprintf(":%s", port))
+	
+
 }
